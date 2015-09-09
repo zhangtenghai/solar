@@ -1,0 +1,23 @@
+<ul class="nav navbar-nav">
+  <li class="classic-menu-dropdown">
+    <a id="menu_dashboard" href="/">
+      控制台
+    </a>
+  </li>
+  <% if can? :edit, :user %>
+  <li class="classic-menu-dropdown">
+    <a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="">
+      员工信息<i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to "员工列表", users_path, { id: "menu_edit_user" } %>
+      </li>
+    </ul>
+  </li>
+  <% end %>
+</ul>
+
+<% content_for :page_scripts do %>
+  <%= javascript_include_tag 'highlight_menu', 'data-turbolinks-track' => false %>
+<% end %>

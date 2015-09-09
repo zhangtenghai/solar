@@ -1,0 +1,75 @@
+<h4 class="form-section"><%=title%></h4>
+<div class="table-responsive">
+  <table class="table table-hover table-bordered">
+    <tr>
+      <th>类别</th>
+      <th>上传者</th>
+      <th>上传时间</th>
+      <th>文件名称</th>
+      <th>文件类型</th>
+      <th>语音识别</th>
+      <th>备注</th>
+      <th>预览</th>
+      <th>操作</th>
+    </tr>
+  <% unless item.aa_rescue_attachments.nil? %>
+    <% item.aa_rescue_attachments.each do |f| %>
+    <tr>
+      <td><%= f.attachment_type %></td>
+      <td><%= f.uploader.name unless f.uploader.nil? %></td>
+      <td><%= f.created_at.strftime('%Y-%m-%d %H:%M:%S') if f.created_at %></td>
+      <td><%= File.basename(f.attachment.path.to_s) %></td>
+      <td><%= f.file_extension %></td>
+      <td></td>
+      <td><%= f.memo %></td>
+      <td>
+        <% if f.attachment.url && f.is_image? %>
+          <img src="<%= f.attachment.url %>"  width="200" height="200">
+        <% elsif f.attachment.url && f.is_voice? %>
+          <audio src="<%=f.attachment.url(:mp3)%>" preload="auto" controls />
+        <% end %>
+      </td>
+      <td>
+        <% unless f.attachment.url.nil? %>
+          <%= link_to "下载", download_aa_rescue_attachment_path(f), method: :post %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+  <% item.worker_jobs.each do |worker_job|%>
+    <% worker_job.wechat_medias.each do |f|%>
+      <tr>
+        <td></td>
+        <td><%= f.worker_job.owner.name unless f.worker_job.owner.nil?%></td>
+        <td><%= f.created_at.strftime('%Y-%m-%d %H:%M:%S') if f.created_at%></td>
+        <%= omission_td(6, f.media_id)%>
+        <td><%= f.file_type %></td>
+        <td><%= f.format %></td>
+        <td></td>
+        <td>
+          <% unless f.media_file.url.nil? %>
+            <% if f.file_type == "image" %>
+              <img src="<%=f.media_file.url%>"  width="200" height="200">
+            <% elsif f.file_type == 'voice' %>
+              <audio src="<%=f.media_file.url(:mp3)%>" preload="auto" controls />
+            <% elsif f.file_type == 'video' %>
+               <video preload="auto" controls>
+                <source id="mp4_src"
+                  src="<%=f.media_file.url%>"
+                  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                </source>
+               </video>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% unless f.media_file.url.nil? %>
+            <a href="<%= f.media_file.url %>">下载</a>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+<!-- BEGIN USER LOGIN DROPDOWN -->
+<li class="dropdown dropdown-user">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+  <span class="username">
+  <% if current_user  %>
+    <%= current_user.name %>
+  <% end %>
+  </span>
+  <i class="fa fa-angle-down"></i>
+  </a>
+  <ul class="dropdown-menu">
+
+    <li class="divider">
+    </li>
+    <li>
+      <%= link_to destroy_user_session_path, { method: "delete", rel: "nofollow" } do %>
+      <i class="icon-key"></i> 注销
+      <% end %>
+    </li>
+  </ul>
+</li>
+<!-- END USER LOGIN DROPDOWN -->

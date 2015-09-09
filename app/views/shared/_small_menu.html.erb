@@ -1,0 +1,55 @@
+<li class="<%= menu_is_active?('home') ? "active" : "" %>">
+  <a href="/">
+    控制台
+    <span class="selected">
+    </span>
+  </a>
+</li>
+
+<li class="<%= menu_is_active?('aa_vendors') ? "active" : "" %>">
+  <a>
+    我的信息
+    <span class="arrow"></span>
+  </a>
+  <ul class="sub-menu">
+    <li>
+      <%= link_to "我的信息", aa_vendors_path %>
+    </li>
+  </ul>
+</li>
+
+<li class="<%= menu_is_active?('apps') ? "active" : "" %>">
+  <a>
+    我的任务
+    <span class="arrow"></span>
+  </a>
+  <ul class="sub-menu">
+    <li>
+      <%= link_to "我的任务", aa_cases_path %>
+    </li>
+  </ul>
+</li>
+
+<li class="<%= menu_is_active?('collects') ? "active" : "" %>">
+  <a>
+    收款记录
+    <span class="arrow"></span>
+  </a>
+  <ul class="sub-menu">
+    <li>
+      <%= link_to "收款记录", collects_path %>
+    </li>
+  </ul>
+</li>
+
+<li class="<%= menu_is_active?('accounting_jobs') ? "active" : "" %>">
+  <a>
+    我的结算
+    <span class="arrow"></span>
+  </a>
+  <ul class="sub-menu">
+    <li><%= link_to "待确认结算", accounting_jobs_path(status: '待供应商核算') %></li>
+    <li><%= link_to "待结算部审核", accounting_jobs_path(status: '待结算部核算') %></li>
+    <li><%= link_to "已完成结算", accounting_jobs_path(status: '已完成') %></li>
+  </ul>
+</li>

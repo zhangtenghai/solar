@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="zh-CN" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="zh-CN" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh-CN" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+  <head>
+    <title>Solar</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="/javascripts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/javascripts/uniform/css/uniform.default.css" rel="stylesheet" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="/javascripts/select2/select2.css" rel="stylesheet" />    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="/stylesheets/style-metronic.css" rel="stylesheet" />
+    <link href="/stylesheets/style.css" rel="stylesheet" />
+    <link href="/stylesheets/style-responsive.css" rel="stylesheet" />
+    <link href="/stylesheets/plugins.css" rel="stylesheet" />
+    <link href="/stylesheets/pages/login.css" rel="stylesheet" />
+    <link href="/stylesheets/custom.css" rel="stylesheet" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <!-- BEGIN BODY -->
+  <body class="login">
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+      <a href="index.html">
+        <img src="/images/logo-big.png" alt=""/>
+      </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+    
+      <%= yield %>
+    </div>
+    <!-- END LOGIN -->
+    <!-- BEGIN COPYRIGHT -->
+    <div class="copyright">
+       2015 &copy; Solar Company.
+    </div>
+    <!-- END COPYRIGHT -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!--[if lt IE 9]>
+      <script src="assets/plugins/respond.min.js"></script>
+      <script src="assets/plugins/excanvas.min.js"></script> 
+      <![endif]-->
+    <script src="/javascripts/jquery-1.11.0.min.js"></script>
+    <script src="/javascripts/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/javascripts/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script src="/javascripts/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/javascripts/jquery.blockui.min.js"></script>
+    <script src="/javascripts/jquery.cokie.min.js"></script>
+    <script src="/javascripts/uniform/jquery.uniform.min.js"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="/javascripts/select2/select2.min.js"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+    <%= yield :page_scripts %>
+    <!-- END JAVASCRIPTS -->
+  </body>
+<!-- END BODY -->
+</html>
