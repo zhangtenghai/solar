@@ -9,8 +9,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-
-
+gem 'therubyracer', platforms: :ruby
+gem 'unicorn', '4.9.0'
 gem 'devise'
 gem 'cancan'
 gem 'mysql2'

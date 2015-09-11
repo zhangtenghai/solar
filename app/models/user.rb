@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  include Searchable
+
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 
@@ -8,6 +10,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :no
 
   belongs_to :company
+  
+  quick_search :no, :name, :phone, :level, :department, :role
   
   def login=(login)
     @login = login

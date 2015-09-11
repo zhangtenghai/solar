@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = @users.page(params[:page])
+    @users = @users.search(params[:search]).page(params[:page])
   end
 
   def new
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    u_params = create_user_params
+    u_params = update_user_params
 
     @user = User.find_by_id(params[:id])
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         @user.unlock_access!
       end
 
-      redirect_to edit_admin_user_path(@user), :notice => "账户更新成功"
+      redirect_to edit_user_path(@user), :notice => "账户更新成功"
     else
       render action: 'edit'
     end
@@ -53,7 +53,10 @@ class UsersController < ApplicationController
 
   private
   def create_user_params
-    params.require(:user).permit(:name,:no,:level,:company_id,:memo,:no_job,:department, :email, :password, :password_confirmation)
+    params.require(:user).permit(:phone, :name,:no,:level,:company_id,:memo,:no_job,:department, :email, :password, :password_confirmation)
   end
 
+  def update_user_params
+    params.require(:user).permit(:phone, :name,:no,:level,:company_id,:memo,:no_job,:department, :email, :password, :password_confirmation)
+  end
 end
