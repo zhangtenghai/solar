@@ -20,7 +20,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_files = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -32,8 +32,7 @@ Rails.application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
-  # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.0'
+  # `config.assets.precompile` has moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
@@ -43,7 +42,7 @@ Rails.application.configure do
   # config.force_ssl = true
 
   # Set to :debug to see everything in the log.
-  config.log_level = :info
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
@@ -77,21 +76,8 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-  
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.clam_api_host = ""
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'dd.caa.com.cn' }
-  ActionMailer::Base.default :from => "webapp@caa.com.cn"
-  config.action_mailer.smtp_settings = {
-    :address => "smtp.exmail.qq.com",
-    :port => "25",
-    :domain => "caa.com.cn",
-    :authentication => :login,
-    :user_name => "webapp@caa.com.cn",
-    :password => "ks8(Ee!N",
-    :enable_starttls_auto => false,
-  }
+
 end
