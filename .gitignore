@@ -38,7 +38,7 @@ config/unicorn.rb
 /spec/reports/
 /test/tmp/
 /test/version_tmp/
-
+/tmp/
 
 ## Specific to RubyMotion:
 .dat*
