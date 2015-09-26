@@ -18,9 +18,9 @@
               
             </div>
             <div class="form-group">
-              <%= render "shared/column", :name => "部门", :content =>  f.select(:department, ['人事部','财务部'], {}, :class => 'form-control select2me') %>
+              <%= render "shared/column", :name => "部门", :content =>  f.select(:department, options[:departments], {}, :class => 'form-control select2me') %>
               
-              <%= render "shared/column", :name => "角色", :content => f.select(:role, ['A','B'], {}, :class => 'form-control select2me') %>
+              <%= render "shared/column", :name => "角色", :content => f.select(:role, OPTIONS[:system_roles], {}, :class => 'form-control select2me') %>
               <%= render "shared/column", :name => "电话", :content =>  f.c_text_field(:phone) %>
             </div>
             <div class="form-group">
