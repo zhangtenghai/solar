@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :no
 
   belongs_to :company
-  
-  quick_search :no, :name, :phone, :level, :department, :role
+  belongs_to :department
+  belongs_to :position
+  quick_search :no, :name, :phone, :level, :role
   
   def login=(login)
     @login = login

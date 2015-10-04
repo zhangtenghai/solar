@@ -12,30 +12,88 @@
             <%= f.error_messages %>
             <h4 class="form-section">基本信息</h4>
             <div class="form-group">
-              <%= render "shared/column", :name => "账号(邮箱)", :content =>  f.email_field(:email, :autofocus => true, :class => 'form-control') %>
-              <%= render "shared/column", :name => "姓名", :content =>  f.c_text_field(:name) %>
-              <%= render "shared/column", :name => "工号", :content =>  f.c_text_field(:no) %>
-              
-            </div>
-            <div class="form-group">
-              <%= render "shared/column", :name => "部门", :content =>  f.select(:department, OPTIONS["departments"], {}, :class => 'form-control select2me') %>
-              
-              <%= render "shared/column", :name => "角色", :content => f.select(:role, OPTIONS["system_roles"], {}, :class => 'form-control select2me') %>
-              <%= render "shared/column", :name => "电话", :content =>  f.c_text_field(:phone) %>
-            </div>
-            <div class="form-group">
-              <%= render "shared/column", :name => "密码", :content => f.password_field(:password, :class => 'form-control') %>
-              <%= render "shared/column", :name => "确认密码", :content => f.password_field(:password_confirmation, :class => 'form-control') %>
-            </div>
-            <div class="form-group">
+              <%= render "shared/column4", :name => "账号(邮箱)", :content =>  f.email_field(:email, :autofocus => true, :class => 'form-control') %>
+              <%= render "shared/column4", :name => "工号", :content =>  f.c_text_field(:no) %>
+              <%= render "shared/column4", :name => "角色", :content => f.select(:role, OPTIONS["system_roles"], {}, :class => 'form-control select2me') %>
               <label class="control-label col-md-1">禁用账户</label>
-              <div class="col-md-1">
+              <div class="col-md-2">
                 <div class="checkbox-list">
                   <label class="checkbox-inline">
                     <%= check_box_tag(:locked, "1", @user.access_locked?, :class => "form-control" ) %>
                   </label>
                 </div>
               </div>
+            </div>
+            <div class="form-group">
+              <%= render "shared/column4", :name => "公司", :content =>  f.select(:company_id, Company.all.collect{|p| [p.name, p.id]}, {:include_blank => true}, :class => 'form-control select2me') %>
+              <%= render "shared/column4", :name => "部门", :content =>  f.select(:department_id, Department.all.collect{|p| [p.name, p.id]}, {:include_blank => true},:class => 'form-control select2me') %>
+              <%= render "shared/column4", :name => "职位", :content => f.select(:position_id, Position.all.collect{|p| [p.name, p.id]}, {:include_blank => true}, :class => 'form-control select2me') %>
+              <%= render "shared/column4", :name => "性别", :content => f.select(:sex, OPTIONS["sex"], {}, :class => 'form-control select2me') %>
+            </div>
+            <div class="form-group">
+              <%= render "shared/column4", :name => "姓名", :content =>  f.c_text_field(:name) %>
+              <%= render "shared/column4", :name => "电话", :content =>  f.c_text_field(:phone) %>
+              <%= render "shared/column4", :name => "身份证", :content =>  f.c_text_field(:cid) %>
+              
+            </div>
+            <div class="form-group">
+              <%= render "shared/column4", :name => "出生日期", :content =>  f.c_date_field(:birthday) %>
+              <%= render "shared/column4", :name => "入职日期", :content =>  f.c_date_field(:entry_at) %>
+              <%= render "shared/column4", :name => "密码", :content => f.password_field(:password, :class => 'form-control') %>
+              <%= render "shared/column4", :name => "确认密码", :content => f.password_field(:password_confirmation, :class => 'form-control') %>
+            </div>
+     
+            <h4 class="form-section">劳资信息</h4>
+            <div class="form-group">
+              <%= render "shared/column", :name => "合同生效日期", :content =>  f.c_date_field(:contract_effectived_at) %>
+              <%= render "shared/column", :name => "合同截至日期", :content =>  f.c_date_field(:contract_expired_at) %>
+              <%= render "shared/column", :name => "中行卡号", :content =>  f.c_text_field(:bank_no) %>
+            </div>
+            <div class="form-group">
+              <%= render "shared/column_triple", :name => "岗位/薪资调整记录", :content =>  f.text_area(:salary_record,class: "form-control") %>
+            </div>
+            <h4 class="form-section">教育与工作背景</h4>
+            <div class="form-group">
+              <%= render "shared/column4", :name => "毕业院校", :content =>  f.c_text_field(:school) %>
+              <%= render "shared/column4", :name => "学历", :content => f.select(:education, OPTIONS["educations"], {}, :class => 'form-control select2me') %>
+              <%= render "shared/column4", :name => "专业名称", :content =>  f.c_text_field(:major) %>
+              <%= render "shared/column4", :name => "专业证书", :content =>  f.c_text_field(:certificate) %>
+            </div>
+            <div class="form-group">
+              <%= render "shared/column_double", :name => "曾工作公司1", :content =>  f.c_text_field(:history_company1) %>
+              <%= render "shared/column_double", :name => "职位1", :content =>  f.c_text_field(:history_position1) %>
+            </div>
+            <div class="form-group">
+              <%= render "shared/column_double", :name => "曾工作公司2", :content =>  f.c_text_field(:history_company2) %>
+              <%= render "shared/column_double", :name => "职位2", :content =>  f.c_text_field(:history_position2) %>
+            </div>
+            <div class="form-group">
+              <%= render "shared/column_double", :name => "曾工作公司3", :content =>  f.c_text_field(:history_company3) %>
+              <%= render "shared/column_double", :name => "职位3", :content =>  f.c_text_field(:history_position3) %>
+            </div>
+            <h4 class="form-section">家庭与社会关系</h4>
+            <div class="form-group">
+              <%= render "shared/column4", :name => "名族", :content =>  f.c_text_field(:nation) %>
+              <%= render "shared/column4", :name => "信仰", :content =>  f.c_text_field(:faith) %>
+              <%= render "shared/column4", :name => "婚姻情况", :content => f.select(:marital_status, OPTIONS["marital_status"], {}, :class => 'form-control select2me') %>
+              <label class="control-label col-md-1">有无子女</label>
+              <div class="col-md-2">
+                <div class="checkbox-list">
+                  <label class="checkbox-inline">
+                    <%= check_box_tag(:has_children,  :class => "form-control" ) %>
+                  </label>
+                </div>
+              </div>
+              
+            </div>
+            <div class="form-group">
+              <%= render "shared/column4", :name => "配偶姓名", :content =>  f.c_text_field(:spouse_name) %>
+              <%= render "shared/column4", :name => "配偶单位", :content =>  f.c_text_field(:spouse_company) %>
+              <%= render "shared/column4", :name => "紧急联系人", :content =>  f.c_text_field(:emergency_contact) %>
+              <%= render "shared/column4", :name => "紧急联系人电话", :content =>  f.c_text_field(:emergency_phone) %>
+            </div>
+            <div class="form-group">
+              <%= render "shared/column_triple", :name => "家庭住址", :content =>  f.c_text_field(:address) %>
             </div>
             <div class="form-actions right">
               <button type="submit" class="btn">保存</button>

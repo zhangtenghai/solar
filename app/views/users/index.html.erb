@@ -23,13 +23,14 @@
             <thead>
               <tr>
                 <th>公司</th>
+                <th>部门</th>
+                <th>职位</th>
                 <th>名称</th>
                 <th>工号</th>
                 <th>级别</th>
                 <th>邮箱</th>
                 <th>岗位</th>
                 <th>电话</th>
-                <th>部门</th>
                 <th>在职</th>
                 <th>状态</th>
                 <th></th>
@@ -39,13 +40,15 @@
               <% @users.each do |item| %>
                 <tr>
                   <td><%= item.company.name if item.company %></td>
+                  <td><%= item.department.name if item.department %></td>
+                  <td><%= item.position.name if item.position %></td>
                   <td><%= item.name %></td>
                   <td><%= item.no %></td>
                   <td><%= item.level %></td>
                   <td><%= item.email %></td>
                   <td><%= item.role %></td>
                   <td><%= item.phone %></td>
-                  <td><%= item.department %></td>
+                  
                   <td><%= item.no_job ? '离职' : '在职' %></td>
                   <td><%= item.locked_at ? '禁用' : '启用' %></td>
                   <td>

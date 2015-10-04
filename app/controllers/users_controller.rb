@@ -53,10 +53,22 @@ class UsersController < ApplicationController
 
   private
   def create_user_params
-    params.require(:user).permit(:phone, :name,:no,:level,:company_id,:memo,:no_job,:department, :email, :password, :password_confirmation)
+    params.require(:user).permit(:phone, :name,:no,:level,:company_id,:memo,:no_job,:department_id,:position_id,
+      :email, :password, :password_confirmation, :position,:entry_at,:turnover_at,:sex,
+      :cid,:birthday, :contract_effectived_at, :contract_expired_at, :salary_record,:bank_no,
+      :school, :education, :major, :certificate, :history_company1, :history_position1,
+      :history_company2, :history_position2,:history_company3, :history_position3,:address,
+      :nation, :faith, :marital_status, :spouse_name, :spouse_company, :has_children,
+      :emergency_contact, :emergency_phone)
   end
 
   def update_user_params
-    params.require(:user).permit(:phone, :name,:no,:level,:company_id,:memo,:no_job,:department, :email, :password, :password_confirmation)
+    params.require(:user).permit(:phone, :name,:no,:level,:company_id,:memo,:no_job,:department_id,:position_id,
+      :email, :password, :password_confirmation, :position,:entry_at,:turnover_at,:sex,
+      :cid,:birthday, :contract_effectived_at, :contract_expired_at, :salary_record,:bank_no,
+      :school, :education, :major, :certificate, :history_company1, :history_position1,
+      :history_company2, :history_position2,:history_company3, :history_position3,:address,
+      :nation, :faith, :marital_status, :spouse_name, :spouse_company, :has_children,
+      :emergency_contact, :emergency_phone)
   end
 end

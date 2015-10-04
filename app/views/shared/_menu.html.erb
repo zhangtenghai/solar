@@ -16,6 +16,20 @@
     </ul>
   </li>
   <% end %>
+  <% if can? :edit, :user %>
+  <li class="classic-menu-dropdown">
+    <a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="">
+      系统配置<i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to "公司", companies_path, { id: "menu_edit_company" } %>
+        <%= link_to "部门", departments_path, { id: "menu_edit_department" } %>
+        <%= link_to "职位", positions_path, { id: "menu_edit_position" } %>
+      </li>
+    </ul>
+  </li>
+  <% end %>
 </ul>
 
 <% content_for :page_scripts do %>
