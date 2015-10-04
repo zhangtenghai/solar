@@ -13,7 +13,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'unicorn', '4.9.0'
 gem 'devise'
 gem 'cancan'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 gem 'kaminari'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '3.1.2'
